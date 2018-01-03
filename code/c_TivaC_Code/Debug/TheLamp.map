@@ -1,0 +1,345 @@
+******************************************************************************
+                  TI ARM Linker PC v17.9.0                     
+******************************************************************************
+>> Linked Wed Jan  3 17:54:28 2018
+
+OUTPUT FILE NAME:   <TheLamp.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00001401
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000014ec  0003eb14  R  X
+  SRAM                  20000000   00008000  0000056c  00007a94  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000014ec   000014ec    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    0000125c   0000125c    r-x .text
+  000014c8    000014c8    00000024   00000024    r-- .cinit
+20000000    20000000    0000056c   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    00000200   00000000    rw- .sysmem
+  20000400    20000400    0000016c   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    0000125c     
+                  0000026c    000004d0     gpio.obj (.text)
+                  0000073c    00000370     uart.obj (.text)
+                  00000aac    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.obj (.text)
+                  00000c62    00000002     --HOLE-- [fill = 0]
+                  00000c64    00000184     app_console.obj (.text)
+                  00000de8    00000170     serial.obj (.text)
+                  00000f58    00000148     hal.obj (.text)
+                  000010a0    000000ee     led.obj (.text)
+                  0000118e    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  0000122a    00000002     --HOLE-- [fill = 0]
+                  0000122c    0000007c     system.obj (.text)
+                  000012a8    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  00001310    00000064     systick.obj (.text)
+                  00001374    00000048     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_toi_t2.obj (.text)
+                  000013bc    00000044                                   : autoinit.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  00001400    00000038                                   : boot_cortex_m.obj (.text:_c_int00_noargs)
+                  00001438    00000038                                   : fs_tod_t2.obj (.text)
+                  00001470    0000002c                                   : strncmp.obj (.text)
+                  0000149c    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  000014aa    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  000014b6    0000000a     main.obj (.text)
+                  000014c0    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.text:abort)
+                  000014c4    00000004                                   : pre_init.obj (.text)
+
+.cinit     0    000014c8    00000024     
+                  000014c8    00000013     (.cinit..data.load) [load image, compression = lzss]
+                  000014db    00000001     --HOLE-- [fill = 0]
+                  000014dc    00000008     (__TI_handler_table)
+                  000014e4    00000008     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+.data      0    20000400    0000016c     UNINITIALIZED
+                  20000400    000000c8     app_console.obj (.data:buffer)
+                  200004c8    00000040     gpio.obj (.data:gPortDInterrupts)
+                  20000508    00000040     gpio.obj (.data:gPortFInterrupts)
+                  20000548    00000014     app_console.obj (.data:hello)
+                  2000055c    00000008     system.obj (.data)
+                  20000564    00000004     app_console.obj (.data)
+                  20000568    00000004     systick.obj (.data)
+
+.sysmem    0    20000200    00000200     UNINITIALIZED
+                  20000200    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : memory.obj (.sysmem)
+                  20000208    000001f8     --HOLE--
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       main.obj                       10     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         22     620       0      
+                                                              
+    .\src\app\
+       app_console.obj                388    0         224    
+    +--+------------------------------+------+---------+---------+
+       Total:                         388    0         224    
+                                                              
+    .\src\hal\
+       hal.obj                        328    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         328    0         0      
+                                                              
+    .\src\hal\UART\
+       uart.obj                       880    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         880    0         0      
+                                                              
+    .\src\hal\gpio\
+       gpio.obj                       1232   0         128    
+    +--+------------------------------+------+---------+---------+
+       Total:                         1232   0         128    
+                                                              
+    .\src\hal\systick\
+       systick.obj                    100    0         4      
+    +--+------------------------------+------+---------+---------+
+       Total:                         100    0         4      
+                                                              
+    .\src\system\driver\led\
+       led.obj                        238    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         238    0         0      
+                                                              
+    .\src\system\driver\serial\
+       serial.obj                     368    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         368    0         0      
+                                                              
+    .\src\system\system\
+       system.obj                     124    0         8      
+    +--+------------------------------+------+---------+---------+
+       Total:                         124    0         8      
+                                                              
+    C:\ti\ccsv7\tools\compiler\ti-cgt-arm_17.9.0.STS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       fd_add_t2.obj                  438    0         0      
+       memcpy_t2.obj                  156    0         0      
+       copy_decompress_lzss.obj       104    0         0      
+       fd_toi_t2.obj                  72     0         0      
+       autoinit.obj                   68     0         0      
+       boot_cortex_m.obj              56     0         0      
+       fs_tod_t2.obj                  56     0         0      
+       strncmp.obj                    44     0         0      
+       copy_decompress_none.obj       14     0         0      
+       exit.obj                       4      0         0      
+       pre_init.obj                   4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1016   0         0      
+                                                              
+       Heap:                          0      0         512    
+       Stack:                         0      0         512    
+       Linker Generated:              0      35        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   4696   655       1388   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000014e4 records: 1, size/record: 8, table size: 8
+	.data: load addr=000014c8, load size=00000013 bytes, run addr=20000400, run size=0000016c bytes, compression=lzss
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000014dc records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+000014c1  C$$EXIT                       
+000014ab  ResetISR                      
+20000200  __STACK_END                   
+00000200  __STACK_SIZE                  
+20000200  __STACK_TOP                   
+00000200  __SYSMEM_SIZE                 
+000014e4  __TI_CINIT_Base               
+000014ec  __TI_CINIT_Limit              
+000014dc  __TI_Handler_Table_Base       
+000014e4  __TI_Handler_Table_Limit      
+000013bd  __TI_auto_init_nobinit_nopinit
+000012a9  __TI_decompress_lzss          
+0000149d  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00001375  __aeabi_d2iz                  
+00000ab7  __aeabi_dadd                  
+00000aad  __aeabi_dsub                  
+00001439  __aeabi_f2d                   
+0000118f  __aeabi_memcpy                
+0000118f  __aeabi_memcpy4               
+0000118f  __aeabi_memcpy8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000000  __stack                       
+00001401  _c_int00_noargs               
+20000200  _sys_memory                   
+UNDEFED   _system_post_cinit            
+000014c5  _system_pre_init              
+000014c1  abort                         
+00000c65  app_console                   
+ffffffff  binit                         
+20000400  buffer                        
+00000000  g_pfnVectors                  
+00000443  gpio_enableInterrupt          
+000006d5  gpio_enableOpenDrain          
+00000411  gpio_getData                  
+000005d9  gpio_globalPortDInterrupt     
+0000057b  gpio_globalPortFInterrupt     
+000003c9  gpio_setData                  
+0000026d  gpio_setMode                  
+0000063d  gpio_setMux                   
+20000568  gsystickCallback              
+00000f59  hal_enablePeripheral          
+0000106f  hal_feedWatchdog              
+00001045  hal_initWatchdog              
+20000548  hello                         
+20000564  i                             
+000010e1  led_init                      
+00001123  led_setState                  
+00001159  led_toggleState               
+000014b7  main                          
+0000118f  memcpy                        
+00000de9  serial_init                   
+00000f3d  serial_pReadChar              
+00000f0d  serial_read                   
+00000f23  serial_readChar               
+00000e85  serial_write                  
+00000e9b  serial_writeChar              
+00000eb7  serial_writeText              
+00001471  strncmp                       
+00001273  system_feedWatchdog           
+00001297  system_getTick                
+0000127f  system_init                   
+00001259  system_initWatchdog           
+0000122d  system_sleep                  
+0000134d  systick_CallbackInternal      
+00001311  systick_init                  
+0000073d  uart_config                   
+0000089d  uart_isRXFifoEmpty            
+000008e1  uart_isTXFifoEmpty            
+00000925  uart_isTXFifoFull             
+00000985  uart_pread                    
+000009b7  uart_read                     
+000009ef  uart_write                    
+00000a31  uart_writeChar                
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000200  __STACK_SIZE                  
+00000200  __SYSMEM_SIZE                 
+0000026d  gpio_setMode                  
+000003c9  gpio_setData                  
+00000411  gpio_getData                  
+00000443  gpio_enableInterrupt          
+0000057b  gpio_globalPortFInterrupt     
+000005d9  gpio_globalPortDInterrupt     
+0000063d  gpio_setMux                   
+000006d5  gpio_enableOpenDrain          
+0000073d  uart_config                   
+0000089d  uart_isRXFifoEmpty            
+000008e1  uart_isTXFifoEmpty            
+00000925  uart_isTXFifoFull             
+00000985  uart_pread                    
+000009b7  uart_read                     
+000009ef  uart_write                    
+00000a31  uart_writeChar                
+00000aad  __aeabi_dsub                  
+00000ab7  __aeabi_dadd                  
+00000c65  app_console                   
+00000de9  serial_init                   
+00000e85  serial_write                  
+00000e9b  serial_writeChar              
+00000eb7  serial_writeText              
+00000f0d  serial_read                   
+00000f23  serial_readChar               
+00000f3d  serial_pReadChar              
+00000f59  hal_enablePeripheral          
+00001045  hal_initWatchdog              
+0000106f  hal_feedWatchdog              
+000010e1  led_init                      
+00001123  led_setState                  
+00001159  led_toggleState               
+0000118f  __aeabi_memcpy                
+0000118f  __aeabi_memcpy4               
+0000118f  __aeabi_memcpy8               
+0000118f  memcpy                        
+0000122d  system_sleep                  
+00001259  system_initWatchdog           
+00001273  system_feedWatchdog           
+0000127f  system_init                   
+00001297  system_getTick                
+000012a9  __TI_decompress_lzss          
+00001311  systick_init                  
+0000134d  systick_CallbackInternal      
+00001375  __aeabi_d2iz                  
+000013bd  __TI_auto_init_nobinit_nopinit
+00001401  _c_int00_noargs               
+00001439  __aeabi_f2d                   
+00001471  strncmp                       
+0000149d  __TI_decompress_none          
+000014ab  ResetISR                      
+000014b7  main                          
+000014c1  C$$EXIT                       
+000014c1  abort                         
+000014c5  _system_pre_init              
+000014dc  __TI_Handler_Table_Base       
+000014e4  __TI_CINIT_Base               
+000014e4  __TI_Handler_Table_Limit      
+000014ec  __TI_CINIT_Limit              
+20000000  __stack                       
+20000200  __STACK_END                   
+20000200  __STACK_TOP                   
+20000200  _sys_memory                   
+20000400  buffer                        
+20000548  hello                         
+20000564  i                             
+20000568  gsystickCallback              
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[79 symbols]

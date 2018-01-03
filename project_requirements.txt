@@ -1,0 +1,4 @@
+1. Leuchte mit Motor ansteuern über Infrarot(90° in 3 sec.)
+2. Infrarot-Befehle entgegen nehmen (mind. 4)
+3. W-LED dimmen und Ein/Aus (0-100%)
+
